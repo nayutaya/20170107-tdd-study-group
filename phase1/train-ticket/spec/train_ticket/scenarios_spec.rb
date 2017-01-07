@@ -8,8 +8,9 @@ describe TrainTicket do
     gate_umeda   = TrainTicket::TicketGate.new(station_name: TrainTicket::StationName::UMEDA)
     gate_juso    = TrainTicket::TicketGate.new(station_name: TrainTicket::StationName::JUSO)
 
-    # 150円の普通乗車券を発券する
+    # 梅田駅の券売機で150円の普通乗車券を購入する。
     unused_ticket = vendor_umeda.issue_ordinary_ticket(150)
+    expect(unused_ticket.price).to eq (150)
     # 梅田駅で入場する。
     #entered_ticket, enter_result = gate_umeda.enter(unused_ticket)
     #entered_ticket = gate_umeda.enter!(unused_ticket)
