@@ -48,5 +48,9 @@ describe TrainTicket do
     it "scenario6" do
       expect(TrainTicket::Fare.validate(:umeda, :okamachi, 220)).to eq true
     end
+
+    it "scenario7" do
+      expect(TrainTicket::Fare.validate(:juso, :okamachi, 150)).to eq false
+    end
   end
 end
