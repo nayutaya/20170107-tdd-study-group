@@ -13,7 +13,6 @@ module TrainTicket
     # end
 
     def enter!(ticket)
-      # TODO: 入場できない場合に例外を発生させる。
       return ticket.enter_to!(@station)
     end
 
@@ -22,8 +21,7 @@ module TrainTicket
     # end
 
     def leave!(ticket)
-      # TODO: 出場できない場合に例外を発生させる。
-      return nil # TODO: 出場したチケットを返す。
+      return ticket.leave_from!(@station)
     end
   end
 end

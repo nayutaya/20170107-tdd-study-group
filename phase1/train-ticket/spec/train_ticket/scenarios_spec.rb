@@ -31,6 +31,19 @@ describe TrainTicket do
     }.to raise_error(TrainTicket::Fare::AlreadyEnteredException)
   end
 
+  it "scenario12" do
+    # 梅田駅の券売機で150円の普通乗車券を購入できること。
+    unused_ticket = @vendor_umeda.issue_ordinary_ticket(150)
+    # 未使用の普通乗車券を使って梅田駅で入場できること。
+    entered_ticket = @gate_umeda.enter!(unused_ticket)
+    # 入場した普通乗車券を使って十三駅で出場できること。
+    leaved_ticket = @gate_juso.leave!(entered_ticket)
+    # 出場済みの普通乗用車を使って十三駅で出場できないこと。
+    expect {
+      @gate_juso.leave!(leaved_ticket)
+    }.to raise_error(TrainTicket::Fare::AlreadyLeavedException)
+  end
+
   describe "minimal cases" do
     it "scenario1" do
       expect(TrainTicket::Fare.validate(:umeda, :juso, 150)).to eq true

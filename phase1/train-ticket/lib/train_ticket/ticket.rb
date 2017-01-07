@@ -9,18 +9,31 @@ module TrainTicket
       @type           = :ordinary
       @price          = price
       @entered_at     = nil
-      # TODO: 発行日時
+      @leaved_at      = nil
     end
 
-    attr_reader :issued_station, :type, :price, :entered_at
+    attr_reader :issued_station, :type, :price, :entered_at, :leaved_at
 
     def enter_to!(station)
       unless self.entered_at.nil?
         raise TrainTicket::Fare::AlreadyEnteredException.new
       end
+      unless self.leaved_at.nil?
+        raise TrainTicket::Fare::AlreadyLeavedException.new
+      end
 
       new_ticket = self.dup
       new_ticket.instance_eval { @entered_at = station }
+      return new_ticket
+    end
+
+    def leave_from!(station)
+      unless self.leaved_at.nil?
+        raise TrainTicket::Fare::AlreadyLeavedException.new
+      end
+
+      new_ticket = self.dup
+      new_ticket.instance_eval { @leaved_at = station }
       return new_ticket
     end
   end
