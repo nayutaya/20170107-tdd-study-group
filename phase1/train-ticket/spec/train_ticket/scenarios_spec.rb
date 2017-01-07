@@ -4,9 +4,12 @@ require "spec_helper"
 describe TrainTicket do
   it "scenario1" do
     # TODO: StationNameをStationクラスに変更する。
-    vendor_umeda = TrainTicket::TicketVendor.new(station_name: TrainTicket::StationName::UMEDA)
-    gate_umeda   = TrainTicket::TicketGate.new(station_name: TrainTicket::StationName::UMEDA)
-    gate_juso    = TrainTicket::TicketGate.new(station_name: TrainTicket::StationName::JUSO)
+    umeda_station = TrainTicket::Station.new(name: TrainTicket::StationName::UMEDA)
+    juso_station  = TrainTicket::Station.new(name: TrainTicket::StationName::JUSO)
+
+    vendor_umeda = TrainTicket::TicketVendor.new(station_name: umeda_station.name)
+    gate_umeda   = TrainTicket::TicketGate.new(station_name: umeda_station.name)
+    gate_juso    = TrainTicket::TicketGate.new(station_name: juso_station.name)
 
     # 梅田駅の券売機で150円の普通乗車券を購入する。
     unused_ticket = vendor_umeda.issue_ordinary_ticket(150)
