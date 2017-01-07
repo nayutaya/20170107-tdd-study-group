@@ -6,6 +6,8 @@ module TrainTicket
         return true if leave_station_name == :juso     && ticket_price >= 150
         return true if leave_station_name == :shonai   && ticket_price >= 180
         return true if leave_station_name == :okamachi && ticket_price >= 220
+      elsif enter_station_name == :juso
+        return true if leave_station_name == :okamachi && ticket_price >= 180
       end
       return false
     end
