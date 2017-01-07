@@ -36,7 +36,7 @@ used_ticket, leave_result = ticket_gate_juso.leave(entered_ticket)
 * [x] Ticketクラスを作成する。
 * [x] TicketVendorクラスを作成する。
 * [x] TicketGateクラスを作成する。
-* [ ] Stationクラスを作成する。
+* [x] Stationクラスを作成する。
 * [x] 切符を発行する。
-* [ ] 入場する。
-* [ ] 出場する。
+* [x] 入場する。
+* [x] 出場する。
