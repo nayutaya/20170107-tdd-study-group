@@ -25,14 +25,14 @@ describe TrainTicket do
   end
 
   it "scenario1 minimal" do
-    expect(TrainTicket::Fare.validate("梅田", "十三", 150)).to eq true
+    expect(TrainTicket::Fare.validate(:umeda, :juso, 150)).to eq true
   end
 
   it "scenario2 minimal" do
-    expect(TrainTicket::Fare.validate("梅田", "庄内", 150)).to eq false
+    expect(TrainTicket::Fare.validate(:umeda, :shonai, 150)).to eq false
   end
 
   it "scenario3 minimal" do
-    expect(TrainTicket::Fare.validate("梅田", "庄内", 180)).to eq true
+    expect(TrainTicket::Fare.validate(:umeda, :shonai, 180)).to eq true
   end
 end
