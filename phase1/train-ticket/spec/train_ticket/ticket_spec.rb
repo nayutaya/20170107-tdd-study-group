@@ -3,8 +3,8 @@ require "spec_helper"
 
 describe TrainTicket::Ticket do
   before do
-    @station1 = TrainTicket::Station.new(name: :station1)
-    @station2 = TrainTicket::Station.new(name: :station2)
+    @station1 = TrainTicket::Station.new(name: :umeda)
+    @station2 = TrainTicket::Station.new(name: :juso)
   end
 
   describe "#initialize" do
@@ -22,14 +22,14 @@ describe TrainTicket::Ticket do
 
   describe "enter_to!" do
     it "TODO 1" do
-      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1000)
       expect(ticket1.entered_at).to eq nil
       ticket2 = ticket1.enter_to!(@station1)
       expect(ticket2.entered_at).to be @station1
     end
 
     it "TODO 2" do
-      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1000)
       ticket2 = ticket1.enter_to!(@station1)
       ticket3 = ticket2.leave_from!(@station2)
       expect {
@@ -40,21 +40,21 @@ describe TrainTicket::Ticket do
 
   describe "leave_from!" do
     it "TODO 1" do
-      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1000)
       ticket2 = ticket1.enter_to!(@station1)
       ticket3 = ticket2.leave_from!(@station2)
       expect(ticket3.leaved_at).to be @station2
     end
 
     it "TODO 2" do
-      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1000)
       expect {
         ticket1.leave_from!(@station2)
       }.to raise_error(TrainTicket::Fare::InvalidStateException)
     end
 
     it "TODO 3" do
-      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1000)
       ticket2 = ticket1.enter_to!(@station1)
       ticket3 = ticket2.leave_from!(@station2)
       expect {

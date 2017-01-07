@@ -37,6 +37,9 @@ module TrainTicket
 
       new_ticket = self.dup
       new_ticket.instance_eval { @leaved_at = station }
+
+      raise StandardError.new unless TrainTicket::Fare.validate(new_ticket.entered_at.name, new_ticket.leaved_at.name, new_ticket.price)
+
       return new_ticket
     end
   end

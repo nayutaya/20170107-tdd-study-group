@@ -21,7 +21,6 @@ module TrainTicket
     # end
 
     def leave!(ticket)
-      # TODO: 料金計算する。
       return ticket.leave_from!(@station)
     end
   end
