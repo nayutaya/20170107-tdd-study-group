@@ -23,4 +23,8 @@ describe TrainTicket do
     #used_ticket, leave_result = gate_juso.leave(entered_ticket)
     used_ticket = gate_juso.leave!(entered_ticket)
   end
+
+  it "scenario1 minimal" do
+    expect(TrainTicket::Fare.validate("梅田", "十三", 150)).to eq true
+  end
 end
