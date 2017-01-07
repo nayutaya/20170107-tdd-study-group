@@ -35,4 +35,8 @@ describe TrainTicket do
   it "scenario3 minimal" do
     expect(TrainTicket::Fare.validate(:umeda, :shonai, 180)).to eq true
   end
+
+  it "scenario4 minimal" do
+    expect(TrainTicket::Fare.validate(:umeda, :shonai, 220)).to eq true
+  end
 end
