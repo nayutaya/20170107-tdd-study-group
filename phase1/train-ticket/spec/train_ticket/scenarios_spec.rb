@@ -98,7 +98,9 @@ describe TrainTicket do
     end
 
     it "scenario10" do
-      expect { TrainTicket::Fare.validate(:umeda, :umeda, 150) }.to raise_error(TrainTicket::Fare::SameStationException)
+      expect {
+        TrainTicket::Fare.validate(:umeda, :umeda, 150)
+      }.to raise_error(TrainTicket::Fare::SameStationException)
     end
   end
 end
