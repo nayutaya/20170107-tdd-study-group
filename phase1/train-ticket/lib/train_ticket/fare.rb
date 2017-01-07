@@ -13,6 +13,7 @@ module TrainTicket
         raise SameStationException
       end
 
+      # TODO: リファクタリングする。
       if enter_station_name == :umeda
         return true if leave_station_name == :juso     && ticket_price >= 150
         return true if leave_station_name == :shonai   && ticket_price >= 180
