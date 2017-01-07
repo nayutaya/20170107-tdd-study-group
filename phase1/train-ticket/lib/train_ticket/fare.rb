@@ -1,5 +1,6 @@
 
 module TrainTicket
+  # 料金精算に関するモジュール。
   module Fare
     SameStationException    = Class.new(StandardError)
     AlreadyEnteredException = Class.new(StandardError)

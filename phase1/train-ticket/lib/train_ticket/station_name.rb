@@ -1,5 +1,6 @@
 
 module TrainTicket
+  # 駅名に関するモジュール。
   module StationName
     [
       ["umeda", "梅田"],
