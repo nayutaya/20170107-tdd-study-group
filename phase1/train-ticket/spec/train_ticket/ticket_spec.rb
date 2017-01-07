@@ -21,17 +21,17 @@ describe TrainTicket::Ticket do
   end
 
   describe "enter_to!" do
-    it "TODO" do
+    it "TODO 1" do
       ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
       expect(ticket1.entered_at).to eq nil
       ticket2 = ticket1.enter_to!(@station1)
       expect(ticket2.entered_at).to be @station1
     end
 
-    it "TODO" do
+    it "TODO 2" do
       ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
       ticket2 = ticket1.enter_to!(@station1)
-      ticket3 = ticket1.leave_from!(@station2)
+      ticket3 = ticket2.leave_from!(@station2)
       expect {
         ticket3.enter_to!(@station1)
       }.to raise_error(TrainTicket::Fare::AlreadyLeavedException)
@@ -39,17 +39,24 @@ describe TrainTicket::Ticket do
   end
 
   describe "leave_from!" do
-    it "TODO" do
+    it "TODO 1" do
       ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
       ticket2 = ticket1.enter_to!(@station1)
-      ticket3 = ticket1.leave_from!(@station2)
+      ticket3 = ticket2.leave_from!(@station2)
       expect(ticket3.leaved_at).to be @station2
     end
 
-    it "TODO" do
+    it "TODO 2" do
+      ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
+      expect {
+        ticket1.leave_from!(@station2)
+      }.to raise_error(TrainTicket::Fare::InvalidStateException)
+    end
+
+    it "TODO 3" do
       ticket1 = TrainTicket::Ticket.new(station: @station1, price: 1)
       ticket2 = ticket1.enter_to!(@station1)
-      ticket3 = ticket1.leave_from!(@station2)
+      ticket3 = ticket2.leave_from!(@station2)
       expect {
         ticket3.leave_from!(@station2)
       }.to raise_error(TrainTicket::Fare::AlreadyLeavedException)

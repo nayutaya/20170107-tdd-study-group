@@ -15,11 +15,11 @@ module TrainTicket
     attr_reader :issued_station, :type, :price, :entered_at, :leaved_at
 
     def enter_to!(station)
-      unless self.entered_at.nil?
-        raise TrainTicket::Fare::AlreadyEnteredException.new
-      end
       unless self.leaved_at.nil?
         raise TrainTicket::Fare::AlreadyLeavedException.new
+      end
+      unless self.entered_at.nil?
+        raise TrainTicket::Fare::AlreadyEnteredException.new
       end
 
       new_ticket = self.dup
@@ -28,6 +28,9 @@ module TrainTicket
     end
 
     def leave_from!(station)
+      if self.entered_at.nil?
+        raise TrainTicket::Fare::InvalidStateException.new
+      end
       unless self.leaved_at.nil?
         raise TrainTicket::Fare::AlreadyLeavedException.new
       end
