@@ -16,4 +16,15 @@ describe TrainTicket::Ticket do
       expect(ticket2.price).to eq 2
     end
   end
+
+  describe "enter_to!" do
+    it "TODO" do
+      station1 = TrainTicket::Station.new(name: :station1)
+      station2 = TrainTicket::Station.new(name: :station2)
+      ticket1 = TrainTicket::Ticket.new(station: station1, price: 1)
+      expect(ticket1.entered_at).to eq nil
+      ticket2 = ticket1.enter_to!(station1)
+      expect(ticket2.entered_at).to be station1
+    end
+  end
 end

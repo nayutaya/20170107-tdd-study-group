@@ -1,7 +1,8 @@
 
 module TrainTicket
   module Fare
-    SameStationException = Class.new(StandardError)
+    SameStationException    = Class.new(StandardError)
+    AlreadyEnteredException = Class.new(StandardError)
 
     def self.validate(enter_station_name, leave_station_name, ticket_price)
       if enter_station_name == leave_station_name
