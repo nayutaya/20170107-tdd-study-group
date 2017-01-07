@@ -67,5 +67,9 @@ describe TrainTicket do
       expect(TrainTicket::Fare.validate(:okamachi, :juso, 150)).to eq false
       expect(TrainTicket::Fare.validate(:okamachi, :juso, 180)).to eq true
     end
+
+    it "scenario10" do
+      expect { TrainTicket::Fare.validate(:umeda, :umeda, 150) }.to raise_error(TrainTicket::Fare::SameStationException)
+    end
   end
 end
