@@ -24,27 +24,29 @@ describe TrainTicket do
     used_ticket = gate_juso.leave!(entered_ticket)
   end
 
-  it "scenario1 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :juso, 150)).to eq true
-  end
+  describe "minimal cases" do
+    it "scenario1" do
+      expect(TrainTicket::Fare.validate(:umeda, :juso, 150)).to eq true
+    end
 
-  it "scenario2 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :shonai, 150)).to eq false
-  end
+    it "scenario2" do
+      expect(TrainTicket::Fare.validate(:umeda, :shonai, 150)).to eq false
+    end
 
-  it "scenario3 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :shonai, 180)).to eq true
-  end
+    it "scenario3" do
+      expect(TrainTicket::Fare.validate(:umeda, :shonai, 180)).to eq true
+    end
 
-  it "scenario4 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :shonai, 220)).to eq true
-  end
+    it "scenario4" do
+      expect(TrainTicket::Fare.validate(:umeda, :shonai, 220)).to eq true
+    end
 
-  it "scenario5 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :okamachi, 180)).to eq false
-  end
+    it "scenario5" do
+      expect(TrainTicket::Fare.validate(:umeda, :okamachi, 180)).to eq false
+    end
 
-  it "scenario6 minimal" do
-    expect(TrainTicket::Fare.validate(:umeda, :okamachi, 220)).to eq true
+    it "scenario6" do
+      expect(TrainTicket::Fare.validate(:umeda, :okamachi, 220)).to eq true
+    end
   end
 end
